@@ -33,7 +33,7 @@ def text_splitter(document_data):
     return chunks
 
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
-from langchain_community.vectorstores import Chroma
+from langchain_community.vectorstores import FAISS
 
 # Step 4: Embeddings and Vector Database
 # Now we convert those text chunks into numerical vectors (embeddings) and store them in a database.
@@ -41,9 +41,9 @@ def vector_database(chunks):
     # Initialize Google's Gemini Embedding model
     embedding_model = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
     
-    # Create a vector database using Chroma. We pass the chunks and the embedding model.
+    # Create a vector database using FAISS. We pass the chunks and the embedding model.
     # It will automatically embed the chunks and store them.
-    vectordb = Chroma.from_documents(documents=chunks, embedding=embedding_model)
+    vectordb = FAISS.from_documents(documents=chunks, embedding=embedding_model)
     return vectordb
 
 from langchain_google_genai import ChatGoogleGenerativeAI

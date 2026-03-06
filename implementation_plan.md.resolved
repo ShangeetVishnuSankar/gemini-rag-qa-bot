@@ -1,0 +1,26 @@
+# Building a QA Bot with RAG, Gradio, and Gemini
+
+This project will guide you step-by-step to build a QA Bot capable of answering questions from a loaded PDF document. We will use Retrieval-Augmented Generation (RAG) to fetch relevant information, Google's Gemini LLM to generate answers, and Gradio for the user interface.
+
+## User Review Required
+We will use the **Gemini model and API** instead of IBM Watsonx as requested.
+Please ensure you have a Google Gemini API key (`GEMINI_API_KEY`) available for future steps.
+
+## Proposed Changes
+We will build out a single Python app (`gemini_qa_bot.py`) incrementally. 
+
+### Course Steps
+0. **GitHub Setup**: Initialize a Git repository and push the project to GitHub.
+1. **Setup & Installation**: Understand the packages we need and install them.
+2. **Document Loading**: Write code to load a PDF and extract text.
+3. **Text Chunking**: Split the text into smaller pieces.
+4. **Vector Database**: Convert chunks into numerical vectors (embeddings) and store them in ChromaDB.
+5. **LLM & QA Chain**: Connect our database to the Gemini LLM to answer questions based on the retrieved data.
+6. **Gradio UI**: Create a web interface where a user can upload a PDF and type a question.
+7. **Version Control**: Best practices on keeping the code updated in GitHub as we progress.
+
+## Verification Plan
+### Automated Tests
+- We will write and run a small verification script locally for each step to test the functionality (e.g., verifying PDF extraction works, checking the embeddings).
+### Manual Verification
+- At the end of the course, we will run the Gradio app locally, upload a sample PDF, and verify it returns correct answers through the web interface.
