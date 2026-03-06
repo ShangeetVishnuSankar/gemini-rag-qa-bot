@@ -95,10 +95,34 @@ def retriever_qa(file_path, query):
 # Create the Gradio interface
 # ----------------------------------------------
 def create_app():
-    # We will define the UI here in Step 6
-    pass
+    # We define the Gradio Interface
+    # fn: The function to call when the user clicks submit
+    # inputs: A File upload component for PDF and a Textbox for the question
+    # outputs: A Textbox to display the answer
+    app = gr.Interface(
+        fn=retriever_qa,
+        inputs=[
+            gr.File(label="Upload PDF File", file_count="single", file_types=['.pdf'], type="filepath"),
+            gr.Textbox(label="Input Query", lines=2, placeholder="Type your question here...")
+        ],
+        outputs=gr.Textbox(label="Answer from Document"),
+        title="Gemini QA Bot",
+        description="Upload a PDF document and ask any question. The chatbot will answer using Gemini based on the provided document.",
+        allow_flagging="never"
+    )
+    return app
 
 if __name__ == "__main__":
     print("Welcome to the Gemini QA Bot Course!")
-    # We will launch the app here
     
+    # Check if the Gemini API Key is set
+    if not os.environ.get("GEMINI_API_KEY"):
+        print("ERROR: GEMINI_API_KEY environment variable not found.")
+        print("Please create a .env file and add your API key like this:")
+        print("GEMINI_API_KEY=your_key_here")
+    else:
+        # Launch the Gradio app
+        rag_application = create_app()
+        # This will start a local web server (usually at http://127.0.0.1:7860)
+        rag_application.launch(server_name="127.0.0.1")
+# End of File
