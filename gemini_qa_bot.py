@@ -39,7 +39,7 @@ from langchain_community.vectorstores import FAISS
 # Now we convert those text chunks into numerical vectors (embeddings) and store them in a database.
 def vector_database(chunks):
     # Initialize Google's Gemini Embedding model
-    embedding_model = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
+    embedding_model = GoogleGenerativeAIEmbeddings(model="models/text-embedding-004")
     
     # Create a vector database using FAISS. We pass the chunks and the embedding model.
     # It will automatically embed the chunks and store them.
