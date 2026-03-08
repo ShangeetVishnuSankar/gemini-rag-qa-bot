@@ -39,7 +39,7 @@ from langchain_community.vectorstores import FAISS
 # Now we convert those text chunks into numerical vectors (embeddings) and store them in a database.
 def vector_database(chunks):
     # Initialize Google's Gemini Embedding model
-    embedding_model = GoogleGenerativeAIEmbeddings(model="models/text-embedding-004")
+    embedding_model = GoogleGenerativeAIEmbeddings(model="gemini-embedding-001")
     
     # Create a vector database using FAISS. We pass the chunks and the embedding model.
     # It will automatically embed the chunks and store them.
@@ -54,7 +54,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 # 5a. Set up the LLM
 def get_llm():
     # Initialize Google's Gemini Model. We use gemini-1.5-pro for good reasoning.
-    llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro", temperature=0.3)
+    llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0.3)
     return llm
 
 # 5b. Combine the previous steps to get a "Retriever"
